@@ -3,9 +3,9 @@
 FactoryBot.define do
   factory :user do
     name { Faker::Name.name }
-    sequence(:employee_code) { |i| "#{i}#{Faker::Number.number(10)}" }
+    sequence(:employee_code) { |i| "#{i}#{Faker::Number.number(digits: 10)}" }
     sequence(:email) { |i| "#{i}#{Faker::Internet.email}" }
-    entry_date { Faker::Date.between(3.years.ago, 1.year.ago) }
+    entry_date { Faker::Date.between(from: 3.years.ago, to: 1.year.ago) }
     beginner_flg { [true, false].sample }
     gender { User.genders.keys.sample }
 

@@ -36,8 +36,8 @@ class User < ApplicationRecord
 
   has_one :user_profile, dependent: :destroy
   has_one :role, class_name: 'UserRole', dependent: :destroy
-  has_many :groups, through: :group_assignments, dependent: :destroy
   has_many :group_assignments
+  has_many :groups, through: :group_assignments, dependent: :destroy
   has_many :monthly_reports
   has_many :monthly_report_comments
   has_many :monthly_report_likes
@@ -61,13 +61,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable, :lockable
+         :recoverable, :rememberable, :trackable, :validatable, :lockable, :authentication_keys => [:user_id]
 
   scope :active, -> { where('deleted_at IS NULL OR deleted_at > ?', Time.current) }
 
   class << self
     def find_for_database_authentication(warden_conditions)
-      find_by(encrypted_email: encrypt(warden_conditions[:email]))
+      find_by(encrypted_email: encrypt(warden_conditions[:user][:email]))
     end
 
     def report_registrable_to
@@ -114,5 +114,9 @@ class User < ApplicationRecord
     end
 
     self.password ||= SecureRandom.base64(8) + required_chars.join
+  end
+
+  def will_save_change_to_email?
+    false
   end
 end

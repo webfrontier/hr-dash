@@ -14,8 +14,8 @@
 #
 
 class Group < ApplicationRecord
-  has_many :users, through: :group_assignments, dependent: :destroy
   has_many :group_assignments
+  has_many :users, through: :group_assignments, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true, format: { with: /\A[^@]+@[^@]+\z/ }

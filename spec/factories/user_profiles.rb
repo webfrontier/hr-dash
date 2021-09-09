@@ -18,6 +18,6 @@ FactoryBot.define do
     association :user
     self_introduction { Faker::Lorem.paragraph } 
     blood_type { UserProfile.blood_types.keys.sample }
-    birthday { Faker::Date.between(100.years.ago, Date.today) }
+    birthday { Faker::Date.between(from: 100.years.ago, to: Date.today) }
   end
 end

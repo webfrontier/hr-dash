@@ -1,8 +1,8 @@
-# クラスにコメントを残さない
-Documentation:
-  Enabled: false
+# # クラスにコメントを残さない
+# Documentation:
+#   Enabled: false
 
-# 日本語でのコメントを許可
+# # 日本語でのコメントを許可
 AsciiComments:
   Enabled: false
 
@@ -17,7 +17,7 @@ Metrics/BlockLength:
 TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
-TrailingCommaInLiteral:
+TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
 AllCops:

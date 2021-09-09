@@ -21,6 +21,6 @@ FactoryBot.define do
     body { Faker::Lorem.paragraph }
     referer { Faker::Internet.url }
     user_agent { Faker::Lorem.sentence }
-    session_id { Faker::Lorem.characters(32) }
+    session_id { Faker::Lorem.characters(number: 32) }
   end
 end

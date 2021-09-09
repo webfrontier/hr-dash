@@ -48,7 +48,7 @@ RSpec.describe MonthlyReport, type: :model do
     end
 
     describe '#target_beginning_of_month?' do
-      let(:invalid_target) { Faker::Date.backward(100).end_of_month }
+      let(:invalid_target) { Faker::Date.backward(days: 100).end_of_month }
       let(:monthly_report) { build(:monthly_report, target_month: invalid_target) }
 
       it { expect(monthly_report).not_to be_valid }
