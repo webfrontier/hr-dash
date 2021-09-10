@@ -1,6 +1,6 @@
-development:
+development: &default
   adapter: postgresql
-  host: localhost
+  host: db
   encoding: utf8
   database: hr_dash_dev
   pool: 5
@@ -8,19 +8,11 @@ development:
   password: postgres
 
 test:
-  adapter: postgresql
-  host: localhost
-  encoding: utf8
+  <<: *default
   database: hr_dash_test
-  pool: 5
-  username: postgres
-  password: postgres
 
 production:
-  adapter: postgresql
-  host: localhost
-  encoding: utf8
+  <<: *default
   database: hr_dash_production
-  pool: 5
   username: <%= ENV["HR_DASH_DB_USERNAME"] %>
   password: <%= ENV["HR_DASH_DB_PASSWORD"] %>
