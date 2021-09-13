@@ -10,7 +10,7 @@ describe 'Admin::ArticleComment', type: :feature do
   describe '#index' do
     before { visit admin_article_comments_path }
     it 'should open index page.' do
-      expect(page_title).to have_content('ノートコメント')
+      expect(page_title).to have_content('Article Comments')
       expect(page).to have_content(user.name)
       expect(page).to have_content(comment.comment)
       expect(page).to have_css('.delete_link')
@@ -26,8 +26,8 @@ describe 'Admin::ArticleComment', type: :feature do
     let(:new_comment) { Faker::Lorem.paragraph }
     before do
       visit edit_admin_article_comment_path(comment)
-      fill_in 'コメント', with: new_comment
-      click_on 'ノートコメントを更新'
+      fill_in 'article_comment[comment]', with: new_comment
+      click_on 'Update'
     end
 
     it 'should update the article comment.' do
