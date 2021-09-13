@@ -27,3 +27,6 @@
 //= require main/bootstrap-hover-dropdown.min
 
 //= require_tree ./main
+//= require jquery3
+//= require popper
+//= require bootstrap

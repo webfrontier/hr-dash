@@ -46,6 +46,7 @@ gem 'dotenv-rails'
 gem 'whenever'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop-faker'
+gem 'bootstrap'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
