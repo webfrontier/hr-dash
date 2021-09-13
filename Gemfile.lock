@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: 299d8dcaec93866cb6133a9ab5b74b9c2cf6582e
+  revision: 334343f3d92f80aef1529a2653550611dbb86059
   specs:
     activeadmin (2.9.0)
       arbre (~> 1.2, >= 1.2.1)
@@ -124,7 +124,7 @@ GEM
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.496.0)
+    aws-partitions (1.500.0)
     aws-record (2.6.1)
       aws-sdk-dynamodb (~> 1.18)
     aws-sdk-core (3.121.0)
@@ -304,7 +304,7 @@ GEM
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    parallel (1.20.1)
+    parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
     peek (1.1.0)
@@ -468,7 +468,7 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
-    spring (2.1.1)
+    spring (3.0.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (4.0.2)

@@ -10,10 +10,10 @@ describe 'Admin::HelpText', type: :feature do
 
     # ActionLogレコード作成の為、サンプルとしてグループを登録
     visit new_admin_group_path
-    fill_in '名前', with: new_group.name
-    fill_in 'メールアドレス', with: new_group.email
-    fill_in '説明', with: new_group.description
-    click_on 'グループを作成'
+    fill_in 'group[name]', with: new_group.name
+    fill_in 'group[email]', with: new_group.email
+    fill_in 'group[description]', with: new_group.description
+    click_on 'Create'
   end
 
   describe '#index' do
