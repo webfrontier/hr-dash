@@ -9,7 +9,7 @@ describe 'Admin::Dashboard', type: :feature do
     context 'visit dashboard' do
       let(:title) { find('#page_title') }
       before { visit admin_root_path }
-      it { expect(title).to have_content('ダッシュボード') }
+      it { expect(title).to have_content('Dashboard') }
       it { expect(page).to have_content('最新の月報') }
       it { expect(page).to have_content('最新の未登録タグ') }
     end
