@@ -9,7 +9,7 @@ describe 'Admin::Article', type: :feature do
   describe '#index' do
     before { visit admin_articles_path }
     it 'should open index page.' do
-      expect(page_title).to have_content('ノート')
+      expect(page_title).to have_content('Articles')
       expect(page).to have_content(user.name)
       expect(page).to have_content(article.shipped_at)
     end
@@ -24,8 +24,8 @@ describe 'Admin::Article', type: :feature do
     let(:new_title) { Faker::Lorem.word }
     before do
       visit edit_admin_article_path(article)
-      fill_in 'タイトル', with: new_title
-      click_on 'ノートを更新'
+      fill_in 'article[title]', with: new_title
+      click_on 'Update'
     end
 
     it 'should update the article.' do
