@@ -9,7 +9,7 @@ describe 'Admin::UserProfile', type: :feature do
   describe '#index' do
     before { visit admin_user_profiles_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('プロフィール')
+      expect(page_title).to have_content('User Profiles')
       expect(page).to have_content(user.name)
       expect(page).not_to have_content('作成する')
       expect(page).not_to have_css('.delete_link')
@@ -28,8 +28,8 @@ describe 'Admin::UserProfile', type: :feature do
     let(:new_introduction) { Faker::Lorem.paragraph }
     before do
       visit edit_admin_user_profile_path(profile)
-      fill_in '自己紹介', with: new_introduction
-      click_on 'プロフィールを更新'
+      fill_in 'user_profile[self_introduction]', with: new_introduction
+      click_on 'Update'
     end
 
     it 'should update introduction of user profile' do
