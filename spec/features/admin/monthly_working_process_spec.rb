@@ -10,10 +10,10 @@ describe 'Admin::MonthlyWorkingProcess', type: :feature do
   describe '#index' do
     before { visit admin_monthly_working_processes_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('月別担当業務')
+      expect(page_title).to have_content('Monthly Working Processes')
       expect(page).to have_content(user.name)
       expect(page).not_to have_content('作成する')
-      expect(page).to have_content('閲覧')
+      expect(page).to have_content(:working_process)
       expect(page).not_to have_css('.delete_link')
     end
   end
