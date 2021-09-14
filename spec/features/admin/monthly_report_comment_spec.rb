@@ -10,7 +10,7 @@ describe 'Admin::MonthlyReportComment', type: :feature do
   describe '#index' do
     before { visit admin_monthly_report_comments_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('月報コメント')
+      expect(page_title).to have_content('Monthly Report Comments')
       expect(page).to have_content(user.name)
       expect(page).to have_content(comment.comment)
       expect(page).to have_css('.delete_link')
@@ -26,8 +26,8 @@ describe 'Admin::MonthlyReportComment', type: :feature do
     let(:new_comment) { Faker::Lorem.paragraph }
     before do
       visit edit_admin_monthly_report_comment_path(comment)
-      fill_in 'コメント', with: new_comment
-      click_on '月報コメントを更新'
+      fill_in 'monthly_report_comment[comment]', with: new_comment
+      click_on 'Update'
     end
 
     it 'should update the monthly report comment' do
