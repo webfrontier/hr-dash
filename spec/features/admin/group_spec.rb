@@ -10,9 +10,9 @@ describe 'Admin::Group', type: :feature do
   describe '#index' do
     before { visit admin_groups_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('グループ')
+      expect(page_title).to have_content('Groups')
       expect(page).to have_content(group.name)
-      expect(page).to have_content('作成する')
+      expect(page).to have_content 'Create'
       expect(page).not_to have_css('.delete_link')
     end
   end
@@ -29,10 +29,10 @@ describe 'Admin::Group', type: :feature do
     let(:new_group) { build(:group) }
     before do
       visit new_admin_group_path
-      fill_in '名前', with: new_group.name
-      fill_in 'メールアドレス', with: new_group.email
-      fill_in '説明', with: new_group.description
-      click_on 'グループを作成'
+      fill_in 'group[name]', with: new_group.name
+      fill_in 'group[email]', with: new_group.email
+      fill_in 'group[description]', with: new_group.description
+      click_on 'Create'
     end
 
     it 'should create the new group' do
@@ -45,8 +45,8 @@ describe 'Admin::Group', type: :feature do
     let(:new_description) { Faker::Lorem.paragraph }
     before do
       visit edit_admin_group_path(group)
-      fill_in '説明', with: new_description
-      click_on 'グループを更新'
+      fill_in 'group[description]', with: new_description
+      click_on 'Update'
     end
 
     it 'should update the group' do
@@ -83,7 +83,7 @@ describe 'Admin::Group', type: :feature do
 
       it 'should open the import groups page' do
         expect(current_path).to eq do_import_admin_groups_path
-        expect(page).to have_content('インポートするファイルを選択してください')
+        expect(page).to have_content('Import')
       end
     end
 
@@ -94,7 +94,7 @@ describe 'Admin::Group', type: :feature do
 
       before do
         attach_file 'active_admin_import_model_file', file
-        find('input[type=submit]').click
+        find('input[type="submit"]').click
       end
 
       it 'should imoprt group by csv' do
