@@ -8,7 +8,7 @@ describe 'Admin::User', type: :feature do
   describe '#index' do
     before { visit admin_users_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('ユーザ')
+      expect(page_title).to have_content('User')
       expect(page).to have_content(user.name)
       expect(page).not_to have_css('.delete_link')
     end
@@ -27,13 +27,13 @@ describe 'Admin::User', type: :feature do
     let(:created_user) { User.last }
     before do
       visit new_admin_user_path
-      fill_in '名前', with: user_params.name
-      select user_params.gender, from: '性別'
-      fill_in '社員番号', with: user_params.employee_code
-      fill_in 'メールアドレス', with: user_params.email
-      fill_in '入社日', with: user_params.entry_date
+      fill_in 'user[name]', with: user_params.name
+      select user_params.gender, from: 'Gender'
+      fill_in 'user[employee_code]', with: user_params.employee_code
+      fill_in 'user[email]', with: user_params.email
+      fill_in 'user[entry_date]', with: user_params.entry_date
       check 'user_beginner_flg' if user_params.beginner_flg
-      click_on 'ユーザーを作成'
+      click_on 'Create'
     end
 
     it 'should create the new user' do
@@ -51,8 +51,8 @@ describe 'Admin::User', type: :feature do
     let(:new_name) { Faker::Name.name }
     before do
       visit edit_admin_user_path(user)
-      fill_in '名前', with: new_name
-      click_on 'ユーザーを更新'
+      fill_in 'user[name]', with: new_name
+      click_on 'Update'
     end
 
     it 'should update the user' do
@@ -106,14 +106,14 @@ describe 'Admin::User', type: :feature do
     let(:new_password) { generate_random_password }
     before do
       visit edit_password_admin_user_path(other_user)
-      fill_in 'パスワード', with: new_password
-      fill_in 'パスワード（確認）', with: new_password
-      click_on '更新する'
+      fill_in 'user[password]', with: new_password
+      fill_in 'user[password]', with: new_password
+      click_on 'Update'
     end
 
     it 'should update the password' do
       expect(current_path).to eq admin_users_path
-      expect(page_title).to have_content('ユーザー')
+      expect(page_title).to have_content('Edit Password')
       expect(other_user.reload.valid_password?(new_password)).to be true
     end
   end
