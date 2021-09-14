@@ -8,9 +8,9 @@ describe 'Admin::Tag', type: :feature do
   describe '#index' do
     before { visit admin_tags_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('タグ')
+      expect(page_title).to have_content('Tags')
       expect(page).to have_content(tag.name)
-      expect(page).to have_content('作成する')
+      expect(page).to have_content('Create')
       expect(page).not_to have_css('.delete_link')
     end
   end
@@ -27,9 +27,9 @@ describe 'Admin::Tag', type: :feature do
     let(:new_tag) { build(:tag) }
     before do
       visit new_admin_tag_path
-      fill_in '名前', with: new_tag.name
+      fill_in 'tag[name]', with: new_tag.name
       select 'fixed', from: 'tag_status'
-      click_on 'タグを作成'
+      click_on 'Create'
     end
 
     it 'should create the new tag' do
@@ -42,8 +42,8 @@ describe 'Admin::Tag', type: :feature do
     let(:new_name) { Faker::Lorem.word }
     before do
       visit edit_admin_tag_path(tag)
-      fill_in '名前', with: new_name
-      click_on 'タグを更新'
+      fill_in 'tag[name]', with: new_name
+      click_on 'Update'
     end
 
     it 'should update the tag' do
@@ -60,7 +60,7 @@ describe 'Admin::Tag', type: :feature do
     before do
       visit admin_tags_path
       check "batch_action_item_#{tag.id}"
-      click_on '一括操作'
+      click_on 'Update'
     end
 
     context 'fixedにする' do
