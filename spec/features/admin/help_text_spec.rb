@@ -8,7 +8,7 @@ describe 'Admin::HelpText', type: :feature do
   describe '#index' do
     before { visit admin_help_texts_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('ヘルプテキスト')
+      expect(page_title).to have_content('Help Texts')
       expect(page).to have_content(help_text.category)
       expect(page).not_to have_content('作成する')
       expect(page).not_to have_css('.delete_link')
@@ -29,8 +29,8 @@ describe 'Admin::HelpText', type: :feature do
     let(:new_body) { Faker::Lorem.paragraph }
     before do
       visit edit_admin_help_text_path(help_text)
-      fill_in 'テキスト', with: new_body
-      click_on 'ヘルプテキストを更新'
+      fill_in 'help_text[body]', with: new_body
+      click_on 'Update'
     end
 
     it 'should update the help text' do
