@@ -9,9 +9,9 @@ describe 'Admin::UserRole', type: :feature do
   describe '#index' do
     before { visit admin_user_roles_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('ロール')
+      expect(page_title).to have_content('User Roles')
       expect(page).to have_content(user.name)
-      expect(page).to have_content('作成する')
+      expect(page).to have_content('Create')
       expect(page).to have_css('.delete_link')
     end
   end
@@ -25,9 +25,9 @@ describe 'Admin::UserRole', type: :feature do
     let!(:new_user) { create(:user) }
     before do
       visit new_admin_user_role_path
-      select new_user.name, from: 'ユーザー'
-      select '管理者', from: 'ロール'
-      click_on 'ロールを作成'
+      select new_user.name, from: 'User'
+      select 'Admin', from: 'Role'
+      click_on 'Create'
     end
 
     it 'should create the new user role' do
