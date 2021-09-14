@@ -11,7 +11,7 @@ describe 'Admin::MonthlyReportTag', type: :feature do
   describe '#index' do
     before { visit admin_monthly_report_tags_path }
     it 'should open the index page' do
-      expect(page_title).to have_content('月報タグ')
+      expect(page_title).to have_content('Monthly Report Tags')
       expect(page).to have_content(tag.name)
       expect(page).to have_css('.delete_link')
     end
@@ -27,7 +27,7 @@ describe 'Admin::MonthlyReportTag', type: :feature do
     before do
       visit edit_admin_monthly_report_tag_path(report_tag)
       select new_tag.name, from: 'monthly_report_tag_tag_id'
-      click_on '月報タグを更新'
+      click_on 'Update'
     end
 
     it 'should update the monthly report tag' do
